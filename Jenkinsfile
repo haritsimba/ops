@@ -3,13 +3,7 @@ pipeline {
 
     stages {
 
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/haritsimba/ops.git'
-            }
-        }
-
-        stage('Build Maven') {
+         stage('Build Maven') {
             steps {
                 sh 'mvn clean package'
             }
