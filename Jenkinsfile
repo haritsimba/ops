@@ -3,17 +3,16 @@ pipeline {
 
     stages {
 
-         stage('Build Maven') {
-            steps {
-                sh 'mvn clean package'
+        steps {
+                sh '''
+                docker run --rm \
+                  -v $PWD:/app \
+                  -w /app \
+                  maven:3.9.9-eclipse-temurin-21 \
+                  mvn clean package
+                '''
             }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'mvn test'
-            }
-        }
+          }       
 
         stage('Build Docker Image') {
             steps {
