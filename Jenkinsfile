@@ -2,6 +2,8 @@ pipeline {
     agent any
 
     stages {
+stage("build"){
+
 
         steps {
                 sh '''
@@ -12,8 +14,8 @@ pipeline {
                   mvn clean package
                 '''
             }
-          }       
-
+              
+}
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t spring-api:latest .'
