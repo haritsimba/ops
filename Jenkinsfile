@@ -2,12 +2,12 @@ pipeline {
     agent any
 
     stages {
-        stage("checkout") {
+        stage('checkout') {
             steps {
                 git branch: 'develop', url: 'https://github.com/haritsimba/ops.git'
             }
         }
-        stage("build") {
+        stage('build') {
             steps {
                 sh 'mvn clean package'
             }
